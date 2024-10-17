@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -40,7 +41,14 @@ class StudentPageRepositoryTest {
         int pageSize = 10;
 
         // 페이지 번호를 0부터 세기 때문에 -1을 해줘야 함 (1페이지 선택 -> 0으로 받아와야 함)
-        Pageable pageRequest = PageRequest.of(pageNo - 1, pageSize);
+        Pageable pageRequest = PageRequest.of(
+                pageNo - 1,
+                pageSize,
+//                Sort.by("name").descending() // 정렬 기준은 필드명으로 작성 (컬렁명X)
+                Sort.by(Sort.Order.desc("name"),
+                        Sort.Order.asc("city"))
+        );
+
 
         // when
         Page<Student> allList = repository.findAll(pageRequest);
