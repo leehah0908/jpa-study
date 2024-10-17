@@ -7,7 +7,7 @@ spring:
   application:
     name: jpa
   datasource:
-    url: jdbc:mysql://localhost:3306/jpa?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/spring?serverTimezone=Asia/Seoul
     username: root
     password: mysql
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,7 +15,7 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
