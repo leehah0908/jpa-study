@@ -3,6 +3,7 @@ package com.study.jpa.chap05.repository;
 import com.study.jpa.chap05.entity.Idol;
 
 import java.util.List;
+import java.util.Optional;
 
 // QueryDSL 레포지토리로 사용할 것 (JPA 상속X)
 public interface IdolCustomRepository {
@@ -11,6 +12,6 @@ public interface IdolCustomRepository {
     List<Idol> findAllSortedByName();
 
     // 그룹명으로 아이돌 조회
-    List<Idol> findByGroupName(String groupName);
+    Optional<List<Idol>> findByGroupName(String groupName);
 
 }

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.study.jpa.chap05.entity.QIdol.idol;
 
@@ -26,11 +27,11 @@ public class IdolRepositoryCustomImpl implements IdolCustomRepository {
     }
 
     @Override
-    public List<Idol> findByGroupName(String groupName) {
-        return factory
+    public Optional<List<Idol>> findByGroupName(String groupName) {
+        return Optional.ofNullable(factory
                 .select(idol)
                 .from(idol)
                 .where(idol.group.groupName.eq(groupName))
-                .fetch();
+                .fetch());
     }
 }
